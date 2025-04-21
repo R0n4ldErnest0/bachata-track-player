@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bachata Track Player</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Bachata Track Player</h1>
+        
+        <div class="instruments">
+            <!-- Bongo -->
+            <div class="instrument" id="bongo">
+                <div class="instrument-header">
+                    <div class="instrument-icon">🥁</div>
+                    <h2 class="instrument-name">Bongo</h2>
+                </div>
+                
+                <label class="upload-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M11 14.9V4a1 1 0 0 1 2 0v10.9l3.3-3.3a1 1 0 0 1 1.4 1.4l-5 5a1 1 0 0 1-1.4 0l-5-5a1 1 0 0 1 1.4-1.4L11 14.9z" fill="currentColor"/>
+                        <path d="M19 15a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-3a1 1 0 0 1 2 0v2h12v-2a1 1 0 0 1 1-1z" fill="currentColor"/>
+                    </svg>
+                    Subir pista de Bongo
+                    <input type="file" id="bongo-upload" accept="audio/*" class="hidden">
+                </label>
+                
+                <div class="controls hidden" id="bongo-controls">
+                    <button class="play-btn" id="bongo-play-btn">
+                        <svg id="bongo-play-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8 5v14l11-7z" fill="currentColor"/>
+                        </svg>
+                        <svg id="bongo-pause-icon" class="hidden" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" fill="currentColor"/>
+                        </svg>
+                    </button>
+                    
+                    <div class="file-info" id="bongo-file-info"></div>
+                    
+                    <div class="volume-control">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6.5 8.5H3a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h3.5l5.3 5.3a1 1 0 0 0 1.7-.7V3.9a1 1 0 0 0-1.7-.7L6.5 8.5z" fill="currentColor"/>
+                            <path d="M15.5 7.5a1 1 0 0 1 1.5 0c1.7 1.8 1.7 7.2 0 9a1 1 0 0 1-1.5-1.3c1-1.1 1-5.3 0-6.4a1 1 0 0 1 0-1.3z" fill="currentColor"/>
+                            <path d="M18.5 4.5a1 1 0 0 1 1.5 0C23 7.5 23 16.5 20 19.5a1 1 0 0 1-1.5-1.3c2-2.1 2-9.8 0-11.9a1 1 0 0 1 0-1.3z" fill="currentColor"/>
+                        </svg>
+                        <input type="range" min="0" max="1" step="0.01" value="0.7" class="volume-slider" id="bongo-volume">
+                    </div>
+                </div>
+                
+                <audio id="bongo-audio" class="hidden"></audio>
+            </div>
+            
+            <!-- Bass -->
+            <div class="instrument" id="bass">
+                <div class="instrument-header">
+                    <div class="instrument-icon">🎸</div>
+                    <h2 class="instrument-name">Bass</h2>
+                </div>
+                
+                <label class="upload-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M11 14.9V4a1 1 0 0 1 2 0v10.9l3.3-3.3a1 1 0 0 1 1.4 1.4l-5 5a1 1 0 0 1-1.4 0l-5-5a1 1 0 0 1 1.4-1.4L11 14.9z" fill="currentColor"/>
+                        <path d="M19 15a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-3a1 1 0 0 1 2 0v2h12v-2a1 1 0 0 1 1-1z" fill="currentColor"/>
+                    </svg>
+                    Subir pista de Bass
+                    <input type="file" id="bass-upload" accept="audio/*" class="hidden">
+                </label>
+                
+                <div class="controls hidden" id="bass-controls">
+                    <button class="play-btn" id="bass-play-btn">
+                        <svg id="bass-play-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8 5v14l11-7z" fill="currentColor"/>
+                        </svg>
+                        <svg id="bass-pause-icon" class="hidden" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" fill="currentColor"/>
+                        </svg>
+                    </button>
+                    
+                    <div class="file-info" id="bass-file-info"></div>
+                    
+                    <div class="volume-control">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6.5 8.5H3a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h3.5l5.3 5.3a1 1 0 0 0 1.7-.7V3.9a1 1 0 0 0-1.7-.7L6.5 8.5z" fill="currentColor"/>
+                            <path d="M15.5 7.5a1 1 0 0 1 1.5 0c1.7 1.8 1.7 7.2 0 9a1 1 0 0 1-1.5-1.3c1-1.1 1-5.3 0-6.4a1 1 0 0 1 0-1.3z" fill="currentColor"/>
+                            <path d="M18.5 4.5a1 1 0 0 1 1.5 0C23 7.5 23 16.5 20 19.5a1 1 0 0 1-1.5-1.3c2-2.1 2-9.8 0-11.9a1 1 0 0 1 0-1.3z" fill="currentColor"/>
+                        </svg>
+                        <input type="range" min="0" max="1" step="0.01" value="0.7" class="volume-slider" id="bass-volume">
+                    </div>
+                </div>
+                
+                <audio id="bass-audio" class="hidden"></audio>
+            </div>
+            
+            <!-- Güira -->
+            <div class="instrument" id="guira">
+                <div class="instrument-header">
+                    <div class="instrument-icon">🎵</div>
+                    <h2 class="instrument-name">Güira</h2>
+                </div>
+                
+                <!-- Subsección: Majao -->
+                <div class="subsection" id="guira-majao">
+                    <h3 class="subsection-title">Majao</h3>
+                    
+                    <label class="upload-btn">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M11 14.9V4a1 1 0 0 1 2 0v10.9l3.3-3.3a1 1 0 0 1 1.4 1.4l-5 5a1 1 0 0 1-1.4 0l-5-5a1 1 0 0 1 1.4-1.4L11 14.9z" fill="currentColor"/>
+                            <path d="M19 15a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-3a1 1 0 0 1 2 0v2h12v-2a1 1 0 0 1 1-1z" fill="currentColor"/>
+                        </svg>
+                        Subir pista de Majao
+                        <input type="file" id="majao-upload" accept="audio/*" class="hidden">
+                    </label>
+                    
+                    <div class="controls hidden" id="majao-controls">
+                        <button class="play-btn" id="majao-play-btn">
+                            <svg id="majao-play-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8 5v14l11-7z" fill="currentColor"/>
+                            </svg>
+                            <svg id="majao-pause-icon" class="hidden" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" fill="currentColor"/>
+                            </svg>
+                        </button>
+                        
+                        <div class="file-info" id="majao-file-info"></div>
+                        
+                        <div class="volume-control">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M6.5 8.5H3a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h3.5l5.3 5.3a1 1 0 0 0 1.7-.7V3.9a1 1 0 0 0-1.7-.7L6.5 8.5z" fill="currentColor"/>
+                                <path d="M15.5 7.5a1 1 0 0 1 1.5 0c1.7 1.8 1.7 7.2 0 9a1 1 0 0 1-1.5-1.3c1-1.1 1-5.3 0-6.4a1 1 0 0 1 0-1.3z" fill="currentColor"/>
+                                <path d="M18.5 4.5a1 1 0 0 1 1.5 0C23 7.5 23 16.5 20 19.5a1 1 0 0 1-1.5-1.3c2-2.1 2-9.8 0-11.9a1 1 0 0 1 0-1.3z" fill="currentColor"/>
+                            </svg>
+                            <input type="range" min="0" max="1" step="0.01" value="0.7" class="volume-slider" id="majao-volume">
+                        </div>
+                    </div>
+                    
+                    <audio id="majao-audio" class="hidden"></audio>
+                </div>
+                
+                <!-- Subsección: Derecho -->
+                <div class="subsection" id="guira-derecho">
+                    <h3 class="subsection-title">Derecho</h3>
+                    
+                    <label class="upload-btn">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M11 14.9V4a1 1 0 0 1 2 0v10.9l3.3-3.3a1 1 0 0 1 1.4 1.4l-5 5a1 1 0 0 1-1.4 0l-5-5a1 1 0 0 1 1.4-1.4L11 14.9z" fill="currentColor"/>
+                            <path d="M19 15a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-3a1 1 0 0 1 2 0v2h12v-2a1 1 0 0 1 1-1z" fill="currentColor"/>
+                        </svg>
+                        Subir pista de Derecho
+                        <input type="file" id="derecho-upload" accept="audio/*" class="hidden">
+                    </label>
+                    
+                    <div class="controls hidden" id="derecho-controls">
+                        <button class="play-btn" id="derecho-play-btn">
+                            <svg id="derecho-play-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8 5v14l11-7z" fill="currentColor"/>
+                            </svg>
+                            <svg id="derecho-pause-icon" class="hidden" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" fill="currentColor"/>
+                            </svg>
+                        </button>
+                        
+                        <div class="file-info" id="derecho-file-info"></div>
+                        
+                        <div class="volume-control">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M6.5 8.5H3a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h3.5l5.3 5.3a1 1 0 0 0 1.7-.7V3.9a1 1 0 0 0-1.7-.7L6.5 8.5z" fill="currentColor"/>
+                                <path d="M15.5 7.5a1 1 0 0 1 1.5 0c1.7 1.8 1.7 7.2 0 9a1 1 0 0 1-1.5-1.3c1-1.1 1-5.3 0-6.4a1 1 0 0 1 0-1.3z" fill="currentColor"/>
+                                <path d="M18.5 4.5a1 1 0 0 1 1.5 0C23 7.5 23 16.5 20 19.5a1 1 0 0 1-1.5-1.3c2-2.1 2-9.8 0-11.9a1 1 0 0 1 0-1.3z" fill="currentColor"/>
+                            </svg>
+                            <input type="range" min="0" max="1" step="0.01" value="0.7" class="volume-slider" id="derecho-volume">
+                        </div>
+                    </div>
+                    
+                    <audio id="derecho-audio" class="hidden"></audio>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Master Controls -->
+        <div class="master-controls">
+            <button class="master-btn" id="play-all-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8 5v14l11-7z" fill="currentColor"/>
+                </svg>
+                Reproducir Todo
+            </button>
+            
+            <button class="master-btn" id="stop-all-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6 6h12v12H6z" fill="currentColor"/>
+                </svg>
+                Detener Todo
+            </button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
